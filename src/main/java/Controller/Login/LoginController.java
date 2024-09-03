@@ -1,7 +1,9 @@
-package Controller;
+package Controller.Login;
 
+import Model.Usuario;
+import View.PanelesAdministrador.AdministrarAsistencia;
 import View.Login;
-import View.RegistrarAsistencia;
+import View.PanelesUsuario.RegistrarAsistencia;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
@@ -22,6 +24,7 @@ public class LoginController implements ActionListener {
     private String emailObtenido;
     private int intentosRealizados = 0;
     private static final int intentosMax = 3;
+    private String cargoObtenido;
 
     // Crear constructor del controlador
     public LoginController(Login login) {
@@ -35,12 +38,20 @@ public class LoginController implements ActionListener {
             if (!validarCamposLogin()) {
                 return;
             }
-
             if (!verificarExistenciaEmail()) {
                 return;
             }
-            
-            
+            if (verificarContraseña()) {
+                obtenerDatosAcceso();
+
+                if (cargoObtenido.equals("Administrador")) {
+                    accederAdministrador();
+                } else {
+                    accederUsuario();
+                }
+
+            }
+
         }
     }
 
@@ -84,18 +95,45 @@ public class LoginController implements ActionListener {
         }
         return false;
     }
-    
-    boolean verificarContraseña(){
-        
-        return true;
+
+    boolean verificarContraseña() {
+        String emailIngresado = login.txtEmail.getText();
+        String contraseñaIngresada = login.txtContraseña.getText();
+
+        boolean accesoPermitido = loginOp.SQL_VerificarContraseña(emailIngresado, contraseñaIngresada);
+
+        if (accesoPermitido) {
+            emailObtenido = emailIngresado;
+            return true;
+        } else {
+            intentosRealizados++;
+            if (intentosRealizados < intentosMax) {
+                JOptionPane.showMessageDialog(login, "Contraseña incorrecta. Intento " + intentosRealizados + " de " + intentosMax, "Contraseña incorrecta", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(login, "Se ha excedido el número máximo de intentos. La ventana se cerrará.", "Intentos excedidos", JOptionPane.ERROR_MESSAGE);
+                login.dispose();
+            }
+        }
+        return false;
     }
-    
-    public RegistrarAsistencia accederUsuario(){
-        
-        
-        return null;
-        
+
+    void obtenerDatosAcceso() {
+        loginOp.SQL_ObtenerDatosUsuario(emailObtenido);
+        Usuario usuario = Usuario.getInstance();
+        cargoObtenido = usuario.getCargo();
     }
-    
-   
+
+    public RegistrarAsistencia accederUsuario() {
+        RegistrarAsistencia registrarAsistencia = new RegistrarAsistencia();
+        registrarAsistencia.setVisible(true);
+        login.dispose();
+        return registrarAsistencia;
+    }
+
+    public AdministrarAsistencia accederAdministrador() {
+        AdministrarAsistencia administrarAsistencia = new AdministrarAsistencia();
+        administrarAsistencia.setVisible(true);
+        login.dispose();
+        return administrarAsistencia;
+    }
 }

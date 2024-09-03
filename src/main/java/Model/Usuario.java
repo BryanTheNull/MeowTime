@@ -5,26 +5,26 @@ package Model;
  * @since 20-08-2024
  * @version 1.0
  */
-
 public class Usuario {
-    
+
     // Atributos de la clase
     private int ID_Usuario;
-    private String Nombre;
-    private String Apellido;
+    private String Cargo;
+    private String PrimerNombre;
+    private String SegundoNombre;
+    private String PrimerApellido;
+    private String SegundoApellido;
+    private String Rut;
     private String Email;
-    private String Contraseña;
-    private String Fecha_Ingreso;
-    private String Fecha_Salida;
-    private String Rango;
+    private String FechaRegistro;
 
     // Instancia unica de singleton
     private static Usuario instance;
-    
+
     // Constructor vacio
     private Usuario() {
     }
-    
+
     // Método estático para obtener la instancia única
     public static Usuario getInstance() {
         if (instance == null) {
@@ -32,55 +32,92 @@ public class Usuario {
         }
         return instance;
     }
-    
-    // Getter and Setter
 
     public int getID_Usuario() {
         return ID_Usuario;
     }
+
     public void setID_Usuario(int ID_Usuario) {
         this.ID_Usuario = ID_Usuario;
     }
-    public String getNombre() {
-        return Nombre;
+
+    public String getCargo() {
+        return Cargo;
     }
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
     }
-    public String getApellido() {
-        return Apellido;
+
+    public String getPrimerNombre() {
+        return PrimerNombre;
     }
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+
+    public void setPrimerNombre(String PrimerNombre) {
+        this.PrimerNombre = PrimerNombre;
     }
+
+    public String getSegundoNombre() {
+        return SegundoNombre;
+    }
+
+    public void setSegundoNombre(String SegundoNombre) {
+        this.SegundoNombre = SegundoNombre;
+    }
+
+    public String getPrimerApellido() {
+        return PrimerApellido;
+    }
+
+    public void setPrimerApellido(String PrimerApellido) {
+        this.PrimerApellido = PrimerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return SegundoApellido;
+    }
+
+    public void setSegundoApellido(String SegundoApellido) {
+        this.SegundoApellido = SegundoApellido;
+    }
+
+    public String getRut() {
+        return Rut;
+    }
+
+    public void setRut(String Rut) {
+        this.Rut = Rut;
+    }
+
     public String getEmail() {
         return Email;
     }
+
     public void setEmail(String Email) {
         this.Email = Email;
     }
-    public String getContraseña() {
-        return Contraseña;
+    
+    public String getFechaRegistro() {
+        return FechaRegistro;
     }
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+
+    public void setFechaRegistro(String FechaRegistro) {
+        this.FechaRegistro = FechaRegistro;
     }
-    public String getFecha_Ingreso() {
-        return Fecha_Ingreso;
+    
+    public static void updateInstance(String cargo, String primerNombre, String segundoNombre,
+                                      String primerApellido, String segundoApellido, 
+                                      String rut,String email, String fechaRegistro) {
+        Usuario user = getInstance();
+        user.setCargo(cargo);
+        user.setPrimerNombre(primerNombre);
+        user.setSegundoNombre(segundoNombre);
+        user.setPrimerApellido(primerApellido);
+        user.setSegundoApellido(segundoApellido);
+        user.setRut(rut);
+        user.setEmail(email);
+        user.setFechaRegistro(fechaRegistro);
     }
-    public void setFecha_Ingreso(String Fecha_Ingreso) {
-        this.Fecha_Ingreso = Fecha_Ingreso;
-    }
-    public String getFecha_Salida() {
-        return Fecha_Salida;
-    }
-    public void setFecha_Salida(String Fecha_Salida) {
-        this.Fecha_Salida = Fecha_Salida;
-    }
-    public String getRango() {
-        return Rango;
-    }
-    public void setRango(String Rango) {
-        this.Rango = Rango;
-    }   
+
+   
 }

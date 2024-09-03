@@ -1,6 +1,6 @@
 package View;
 
-import Controller.LoginController;
+import Controller.Login.LoginController;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -18,7 +18,7 @@ public class Login extends javax.swing.JFrame {
     // Variables globales 
     private boolean limpiarEmail = true;
     private boolean limpiarContraseña = true;
-    public boolean ocultarContraseña = false;
+    public boolean ocultarContraseña = true;
 
     // Rutas de imagenes globales
     ImageIcon showIcon = new ImageIcon(Login.class.getResource("/icons/ojo_Abierto 16x16.png"));
@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         loginController = new LoginController(this);
         IconUser.requestFocus();                // Foco a el icono para evitar errores
         txtContraseña.setEchoChar((char) 0);    // Mostrar mensaje en txtContraseña
-        iconOjo.setIcon(showIcon);         // Mostrar icono de ojo abierto
+        iconOjo.setIcon(hideIcon);         // Mostrar icono de ojo abierto
     }
 
     @SuppressWarnings("unchecked")
@@ -248,6 +248,8 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
