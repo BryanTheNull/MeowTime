@@ -1,14 +1,13 @@
 package Model;
 
 /**
- * @author Bryan Vera
- * @since 20-08-2024
- * @version 1.0
+ * @author The Chickens
+ * @since 08-09-2024
  */
-public class Usuario {
+public class Empleado {
 
     // Atributos de la clase
-    private int ID_Usuario;
+    private int ID_Empleado;
     private String Cargo;
     private String PrimerNombre;
     private String SegundoNombre;
@@ -17,28 +16,32 @@ public class Usuario {
     private String Rut;
     private String Email;
     private String FechaRegistro;
+    private String HoraEntrada;
+    private String HoraSalida;
 
-    // Instancia unica de singleton
-    private static Usuario instance;
-
-    // Constructor vacio
-    private Usuario() {
+    public Empleado() {
     }
 
-    // Método estático para obtener la instancia única
-    public static Usuario getInstance() {
-        if (instance == null) {
-            instance = new Usuario();
-        }
-        return instance;
+    public Empleado(int ID_Empleado, String Cargo, String PrimerNombre, String SegundoNombre, String PrimerApellido, String SegundoApellido, String Rut, String Email, String FechaRegistro, String HoraEntrada, String HoraSalida) {
+        this.ID_Empleado = ID_Empleado;
+        this.Cargo = Cargo;
+        this.PrimerNombre = PrimerNombre;
+        this.SegundoNombre = SegundoNombre;
+        this.PrimerApellido = PrimerApellido;
+        this.SegundoApellido = SegundoApellido;
+        this.Rut = Rut;
+        this.Email = Email;
+        this.FechaRegistro = FechaRegistro;
+        this.HoraEntrada = HoraEntrada;
+        this.HoraSalida = HoraSalida;
     }
 
-    public int getID_Usuario() {
-        return ID_Usuario;
+    public int getID_Empleado() {
+        return ID_Empleado;
     }
 
-    public void setID_Usuario(int ID_Usuario) {
-        this.ID_Usuario = ID_Usuario;
+    public void setID_Empleado(int ID_Empleado) {
+        this.ID_Empleado = ID_Empleado;
     }
 
     public String getCargo() {
@@ -105,19 +108,20 @@ public class Usuario {
         this.FechaRegistro = FechaRegistro;
     }
 
-    public static void updateInstance(int ID_Usuario, String cargo, String primerNombre, String segundoNombre,
-            String primerApellido, String segundoApellido,
-            String rut, String email, String fechaRegistro) {
-        Usuario user = getInstance();
-        user.setID_Usuario(ID_Usuario);
-        user.setCargo(cargo);
-        user.setPrimerNombre(primerNombre);
-        user.setSegundoNombre(segundoNombre);
-        user.setPrimerApellido(primerApellido);
-        user.setSegundoApellido(segundoApellido);
-        user.setRut(rut);
-        user.setEmail(email);
-        user.setFechaRegistro(fechaRegistro);
+    public String getHoraEntrada() {
+        return HoraEntrada;
+    }
+
+    public void setHoraEntrada(String HoraEntrada) {
+        this.HoraEntrada = HoraEntrada;
+    }
+
+    public String getHoraSalida() {
+        return HoraSalida;
+    }
+
+    public void setHoraSalida(String HoraSalida) {
+        this.HoraSalida = HoraSalida;
     }
 
 }

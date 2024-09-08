@@ -51,15 +51,13 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         txtFecha = new javax.swing.JLabel();
         txtMensaje = new javax.swing.JLabel();
         lbTitulo = new javax.swing.JLabel();
-        lbClaveAnterior = new javax.swing.JLabel();
         lbNuevaClave = new javax.swing.JLabel();
         lbRepetirClave = new javax.swing.JLabel();
         lbClaveAnterior1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField3 = new javax.swing.JPasswordField();
+        btnCancelar = new javax.swing.JButton();
+        btnGuardarCambios = new javax.swing.JButton();
+        txtNuevaContraseña = new javax.swing.JPasswordField();
+        txtRepetirContraseña = new javax.swing.JPasswordField();
 
         setMaximumSize(new java.awt.Dimension(950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
@@ -71,7 +69,6 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         panelBarraSuperior.setBackground(new java.awt.Color(24, 118, 210));
         panelBarraSuperior.setMaximumSize(new java.awt.Dimension(950, 100));
         panelBarraSuperior.setMinimumSize(new java.awt.Dimension(950, 100));
-        panelBarraSuperior.setPreferredSize(new java.awt.Dimension(950, 100));
 
         txtInformacion.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         txtInformacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,7 +88,7 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
                 .addGroup(panelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFecha)
                     .addComponent(txtInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelBarraSuperiorLayout.setVerticalGroup(
             panelBarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,9 +108,6 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         lbTitulo.setText("CAMBIO DE CLAVE DE ACCESO ");
         lbTitulo.setToolTipText("");
 
-        lbClaveAnterior.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        lbClaveAnterior.setText("Clave de acceso anterior: ");
-
         lbNuevaClave.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lbNuevaClave.setText("Nueva clave de acceso: ");
 
@@ -123,15 +117,13 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         lbClaveAnterior1.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         lbClaveAnterior1.setText("La nueva clave debe contener un minimo de 8 caracteres");
 
-        jButton1.setText("Cancelar ");
+        btnCancelar.setText("Cancelar ");
 
-        jButton2.setText("Guardar Cambios");
+        btnGuardarCambios.setText("Guardar Cambios");
 
-        jPasswordField1.setText("jPasswordField1");
+        txtNuevaContraseña.setText("jPasswordField1");
 
-        jPasswordField2.setText("jPasswordField1");
-
-        jPasswordField3.setText("jPasswordField1");
+        txtRepetirContraseña.setText("jPasswordField1");
 
         javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
         background2.setLayout(background2Layout);
@@ -151,24 +143,19 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
                         .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbClaveAnterior1)
                             .addGroup(background2Layout.createSequentialGroup()
-                                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbRepetirClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbNuevaClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbClaveAnterior, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(background2Layout.createSequentialGroup()
+                                .addComponent(lbNuevaClave, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(background2Layout.createSequentialGroup()
-                        .addGap(378, 378, 378)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(background2Layout.createSequentialGroup()
-                    .addGap(191, 191, 191)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(609, Short.MAX_VALUE)))
+                        .addGap(193, 193, 193)
+                        .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
         background2Layout.setVerticalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,35 +168,26 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
                 .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(lbClaveAnterior1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbClaveAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(33, 33, 33)
                 .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNuevaClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, background2Layout.createSequentialGroup()
-                    .addContainerGap(546, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(114, 114, 114)))
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,12 +198,8 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
-    private javax.swing.JLabel lbClaveAnterior;
+    public javax.swing.JButton btnCancelar;
+    public javax.swing.JButton btnGuardarCambios;
     private javax.swing.JLabel lbClaveAnterior1;
     private javax.swing.JLabel lbNuevaClave;
     private javax.swing.JLabel lbRepetirClave;
@@ -234,5 +208,7 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
     private javax.swing.JLabel txtFecha;
     private javax.swing.JLabel txtInformacion;
     private javax.swing.JLabel txtMensaje;
+    public javax.swing.JPasswordField txtNuevaContraseña;
+    public javax.swing.JPasswordField txtRepetirContraseña;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author Bryan Vera
  * @since 30-08-2024
  */
+
 public class LoginController implements ActionListener {
 
     // Inicializar vista del controllador y sus operaciones
@@ -35,22 +36,22 @@ public class LoginController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login.btnIniciarSesion) {
-//            if (!validarCamposLogin()) {
-//                return;
-//            }
-//            if (!verificarExistenciaEmail()) {
-//                return;
-//            }
-//            if (verificarContraseña()) {
-//                obtenerDatosAcceso();
-//
-//                if (cargoObtenido.equals("Administrador")) {
+            if (!validarCamposLogin()) {
+                return;
+            }
+            if (!verificarExistenciaEmail()) {
+                return;
+            }
+            if (verificarContraseña()) {
+                obtenerDatosAcceso();
+
+                if (cargoObtenido.equals("Administrador")) {
                     accederAdministrador();
-//                } else {
-//                    accederUsuario();
-//                }
-//
-//            }
+                } else {
+                    accederUsuario();
+                }
+
+            }
 
         }
     }

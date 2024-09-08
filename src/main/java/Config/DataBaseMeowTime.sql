@@ -36,9 +36,7 @@ CREATE TABLE Usuarios(
     FOREIGN KEY (ID_Cargo) REFERENCES Cargos (ID_Cargo)
 );
 
-SELECT ID_Usuario, ID_Cargo, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Rut,  Email, Fecha_Registro FROM Usuarios WHERE Email='MeowTime@gmail.com';
-
--- Insertar cuenta de administrador y usuario para pruebas -- contraseña hasheada: MeowTime
+-- Insertar cuenta de administrador y usuarios para pruebas -- contraseña hasheada: MeowTime
 INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, PrimerApellido , Rut, Email, Contraseña) 
 VALUES ('1','Bryan', 'Vera', '21.568.036-3', 'meowTime@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
 
@@ -46,7 +44,7 @@ INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, SegundoNombre, PrimerApellido, Seg
 VALUES ('2','Martin', 'Andres', 'Lopez', 'Herrera', '11.222.333-4', 'martin@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
 
 INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, PrimerApellido , Rut, Email, Contraseña) 
-VALUES ('3','Bryan', 'Vera', '22.333.444-5', 'bryan@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
+VALUES ('3','Benjamin', 'Millaleo', '22.333.444-5', 'benja@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
 
 -- Crear Tabla Asistencias --
 CREATE TABLE Asistencias(
@@ -58,7 +56,38 @@ CREATE TABLE Asistencias(
     FOREIGN KEY (ID_Usuario) REFERENCES Usuarios(ID_Usuario)
 );
 
+-- Insertar entrada y salida para pruebas --
+INSERT INTO Asistencias (ID_Usuario, Fecha, Entrada) VALUES('2','2024-09-01', '08:30:00');
+UPDATE Asistencias SET Salida = '18:10:00' Where ID_Usuario = 2 AND Fecha = '2024-09-01';
+
+INSERT INTO Asistencias (ID_Usuario, Fecha, Entrada) VALUES('2','2024-09-02', '08:00:00');
+UPDATE Asistencias SET Salida = '17:00:00' Where ID_Usuario = 2 AND Fecha = '2024-09-02';
+
+INSERT INTO Asistencias (ID_Usuario, Fecha, Entrada) VALUES('2','2024-09-03', '09:30:00');
+UPDATE Asistencias SET Salida = '18:10:00' Where ID_Usuario = 2 AND Fecha = '2024-09-03';
+
+INSERT INTO Asistencias (ID_Usuario, Fecha, Entrada) VALUES('2','2024-09-04', '07:50:00');
+UPDATE Asistencias SET Salida = '17:55:00' Where ID_Usuario = 2 AND Fecha = '2024-09-04';
+
+INSERT INTO Asistencias (ID_Usuario, Fecha, Entrada) VALUES('2','2024-09-05', '10:30:00');
+UPDATE Asistencias SET Salida = '20:10:00' Where ID_Usuario = 2 AND Fecha = '2024-09-05';
+
 
 SELECT * FROM CARGOS;
+	DO SLEEP(5);
 SELECT * FROM Usuarios;
+	DO SLEEP(5);
 SELECT * FROM Asistencias;
+	DO SLEEP(5);
+
+
+-- REPORTE DIARIO DE ASISTENCIA-- 
+SELECT A.ID_Asistencia,
+	   CONCAT(U.PrimerNombre, ' ' ,SegundoNombre) AS NombreCompleto,
+       U.Rut,
+       (SELECT Nombre FROM Cargos WHERE ID_Cargo = U.ID_Cargo) AS NombreCargo,
+       A.Entrada,
+       A.Salida
+FROM Asistencias A 
+JOIN Usuarios U ON A.ID_Usuario = U.ID_Usuario
+WHERE A.Fecha = CURDATE();

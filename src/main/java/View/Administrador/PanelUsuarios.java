@@ -46,10 +46,16 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private void initComponents() {
 
         background2 = new javax.swing.JPanel();
+        txtMensaje = new javax.swing.JLabel();
         panelBarraSuperior = new javax.swing.JPanel();
         txtInformacion = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
-        txtMensaje = new javax.swing.JLabel();
+        jScrollPaneTable = new javax.swing.JScrollPane();
+        jTableUsuarios = new javax.swing.JTable();
+        btnRegistrarUsuario = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnModificarUsuario = new javax.swing.JButton();
+        btnEliminarUsuario = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
@@ -57,6 +63,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
         background2.setBackground(new java.awt.Color(255, 255, 255));
         background2.setMaximumSize(new java.awt.Dimension(950, 700));
         background2.setMinimumSize(new java.awt.Dimension(950, 700));
+
+        txtMensaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtMensaje.setText("Bienvenido a tu sistema favorito ♥");
 
         panelBarraSuperior.setBackground(new java.awt.Color(24, 118, 210));
         panelBarraSuperior.setMaximumSize(new java.awt.Dimension(950, 100));
@@ -93,8 +102,36 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        txtMensaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtMensaje.setText("Bienvenido a tu sistema favorito ♥");
+        jScrollPaneTable.setBorder(null);
+
+        jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°", "NOMBRES", "APELLIDOS", "CARGO", "RUT/DNI", "EMAIL", "FECHA DE REGISTRO", "ACCION"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableUsuarios.setToolTipText("");
+        jScrollPaneTable.setViewportView(jTableUsuarios);
+
+        btnRegistrarUsuario.setText("Registrar Usuario");
+
+        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("LISTA DE USUARIOS REGISTRADOS");
+
+        btnModificarUsuario.setText("Modificar Usuario");
+
+        btnEliminarUsuario.setText("Eliminar Usuario");
 
         javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
         background2.setLayout(background2Layout);
@@ -102,9 +139,25 @@ public class PanelUsuarios extends javax.swing.JPanel {
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(background2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(673, Short.MAX_VALUE))
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPaneTable, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(background2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(17, 17, 17)
+                                .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         background2Layout.setVerticalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,16 +166,23 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 .addComponent(txtMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelBarraSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPaneTable, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +193,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
+    public javax.swing.JButton btnEliminarUsuario;
+    public javax.swing.JButton btnModificarUsuario;
+    public javax.swing.JButton btnRegistrarUsuario;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPaneTable;
+    public javax.swing.JTable jTableUsuarios;
     private javax.swing.JPanel panelBarraSuperior;
     private javax.swing.JLabel txtFecha;
     private javax.swing.JLabel txtInformacion;

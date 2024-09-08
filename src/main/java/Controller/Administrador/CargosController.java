@@ -1,8 +1,5 @@
 package Controller.Administrador;
 
-import Controller.*;
-import View.Seguridad.PanelCambiarContraseña;
-import View.Administrador.PanelAsistenciaDiaria;
 import View.Administrador.PanelCargos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
