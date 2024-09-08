@@ -71,7 +71,7 @@ public class LoginOperation {
 
     public Usuario SQL_ObtenerDatosUsuario(String v_Email) {
         Usuario usuario = null;
-        String sql = "SELECT (SELECT Nombre FROM Cargos WHERE ID_Cargo = usuarios.ID_Cargo) AS Cargo ,PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Rut,  Email, Fecha_Registro FROM Usuarios WHERE Email=?";
+        String sql = "SELECT ID_Usuario, (SELECT Nombre FROM Cargos WHERE ID_Cargo = usuarios.ID_Cargo) AS Cargo ,PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Rut,  Email, Fecha_Registro FROM Usuarios WHERE Email=?";
         try {
             con = dbConnection.getConnection();
             ps = con.prepareStatement(sql);
@@ -80,6 +80,7 @@ public class LoginOperation {
             rs = ps.executeQuery();
 
             if (rs.next()) {
+                int id_usuario = rs.getInt("ID_Usuario");
                 String cargo = rs.getString("Cargo");
                 String nombre = rs.getString("PrimerNombre");
                 String segundoNombre = rs.getString("SegundoNombre");
@@ -95,7 +96,7 @@ public class LoginOperation {
                 String email = rs.getString("Email");
                 String fechaRegistro = rs.getString("Fecha_Registro");
 
-                Usuario.updateInstance(cargo, nombre, segundoNombre, apellido, segundoApellido, rut, email, fechaRegistro);
+                Usuario.updateInstance(id_usuario, cargo, nombre, segundoNombre, apellido, segundoApellido, rut, email, fechaRegistro);
             }
         } catch (SQLException e) {
             e.printStackTrace();

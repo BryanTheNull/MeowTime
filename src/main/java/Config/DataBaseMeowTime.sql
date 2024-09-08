@@ -36,12 +36,17 @@ CREATE TABLE Usuarios(
     FOREIGN KEY (ID_Cargo) REFERENCES Cargos (ID_Cargo)
 );
 
--- Insertar cuenta de administrador y usuario para pruebas --
+SELECT ID_Usuario, ID_Cargo, PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Rut,  Email, Fecha_Registro FROM Usuarios WHERE Email='MeowTime@gmail.com';
+
+-- Insertar cuenta de administrador y usuario para pruebas -- contraseña hasheada: MeowTime
 INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, PrimerApellido , Rut, Email, Contraseña) 
-VALUES ('1','Bryan', 'Vera', '21.568.036-3', 'meowTime@gmail.com', 'meowtime');
+VALUES ('1','Bryan', 'Vera', '21.568.036-3', 'meowTime@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
 
 INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, SegundoNombre, PrimerApellido, SegundoApellido, Rut, Email, Contraseña) 
-VALUES ('2','Martin', 'Andres', 'Lopez', 'Herrera', '11.222.333-4', 'martin@gmail.com', 'meowtime');
+VALUES ('2','Martin', 'Andres', 'Lopez', 'Herrera', '11.222.333-4', 'martin@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
+
+INSERT INTO Usuarios (ID_Cargo ,PrimerNombre, PrimerApellido , Rut, Email, Contraseña) 
+VALUES ('3','Bryan', 'Vera', '22.333.444-5', 'bryan@gmail.com', '$2a$10$aVdbAnbnoWjbnnSA2VHE9.Z1s7gz/aAnXAScZ7GeqBmsfgkWGQGIO');
 
 -- Crear Tabla Asistencias --
 CREATE TABLE Asistencias(
@@ -57,4 +62,3 @@ CREATE TABLE Asistencias(
 SELECT * FROM CARGOS;
 SELECT * FROM Usuarios;
 SELECT * FROM Asistencias;
-

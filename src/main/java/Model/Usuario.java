@@ -105,10 +105,11 @@ public class Usuario {
         this.FechaRegistro = FechaRegistro;
     }
     
-    public static void updateInstance(String cargo, String primerNombre, String segundoNombre,
+    public static void updateInstance(int ID_Usuario, String cargo, String primerNombre, String segundoNombre,
                                       String primerApellido, String segundoApellido, 
                                       String rut,String email, String fechaRegistro) {
         Usuario user = getInstance();
+        user.setID_Usuario(ID_Usuario);
         user.setCargo(cargo);
         user.setPrimerNombre(primerNombre);
         user.setSegundoNombre(segundoNombre);

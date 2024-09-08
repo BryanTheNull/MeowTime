@@ -1,9 +1,9 @@
 package Controller.Login;
 
 import Model.Usuario;
-import View.PanelesAdministrador.AdministrarAsistencia;
-import View.Login;
-import View.PanelesUsuario.RegistrarAsistencia;
+import View.Administrador.AdministradorView;
+import View.Login.Login;
+import View.Usuario.UsuarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
@@ -35,22 +35,22 @@ public class LoginController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == login.btnIniciarSesion) {
-            if (!validarCamposLogin()) {
-                return;
-            }
-            if (!verificarExistenciaEmail()) {
-                return;
-            }
-            if (verificarContraseña()) {
-                obtenerDatosAcceso();
-
-                if (cargoObtenido.equals("Administrador")) {
+//            if (!validarCamposLogin()) {
+//                return;
+//            }
+//            if (!verificarExistenciaEmail()) {
+//                return;
+//            }
+//            if (verificarContraseña()) {
+//                obtenerDatosAcceso();
+//
+//                if (cargoObtenido.equals("Administrador")) {
                     accederAdministrador();
-                } else {
-                    accederUsuario();
-                }
-
-            }
+//                } else {
+//                    accederUsuario();
+//                }
+//
+//            }
 
         }
     }
@@ -123,17 +123,17 @@ public class LoginController implements ActionListener {
         cargoObtenido = usuario.getCargo();
     }
 
-    public RegistrarAsistencia accederUsuario() {
-        RegistrarAsistencia registrarAsistencia = new RegistrarAsistencia();
-        registrarAsistencia.setVisible(true);
+    public UsuarioView accederUsuario() {
         login.dispose();
+        UsuarioView registrarAsistencia = new UsuarioView();
+        registrarAsistencia.setVisible(true);
         return registrarAsistencia;
     }
 
-    public AdministrarAsistencia accederAdministrador() {
-        AdministrarAsistencia administrarAsistencia = new AdministrarAsistencia();
-        administrarAsistencia.setVisible(true);
+    public AdministradorView accederAdministrador() {
         login.dispose();
+        AdministradorView administrarAsistencia = new AdministradorView();
+        administrarAsistencia.setVisible(true);
         return administrarAsistencia;
     }
 }

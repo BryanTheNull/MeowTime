@@ -1,12 +1,14 @@
-package View;
+package View.Login;
 
+import Config.App;
 import Controller.Login.LoginController;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- * @author Bryan Vera
+ * @author The Chickens
  * @since 26-08-2024
  */
 
@@ -23,6 +25,9 @@ public class Login extends javax.swing.JFrame {
     // Rutas de imagenes globales
     ImageIcon showIcon = new ImageIcon(Login.class.getResource("/icons/ojo_Abierto 16x16.png"));
     ImageIcon hideIcon = new ImageIcon(Login.class.getResource("/icons/ojo_Cerrado 16x16.png"));
+    
+    // Ruta de logo de MeowTime
+    Image meowTime = new ImageIcon(App.class.getResource("/icons/logo_MeowTime 512x512.png")).getImage();
 
     public Login() {
         initComponents();
@@ -35,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         IconUser.requestFocus();                // Foco a el icono para evitar errores
         txtContraseña.setEchoChar((char) 0);    // Mostrar mensaje en txtContraseña
         iconOjo.setIcon(hideIcon);         // Mostrar icono de ojo abierto
+        setIconImage(meowTime);           // Establecer logo de MeowTime
     }
 
     @SuppressWarnings("unchecked")
