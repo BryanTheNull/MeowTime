@@ -8,6 +8,7 @@ public class Empleado {
 
     // Atributos de la clase
     private int ID_Empleado;
+    private int ID_Asistecia;
     private String Cargo;
     private String PrimerNombre;
     private String SegundoNombre;
@@ -16,24 +17,11 @@ public class Empleado {
     private String Rut;
     private String Email;
     private String FechaRegistro;
+    private String Fecha;
     private String HoraEntrada;
     private String HoraSalida;
 
     public Empleado() {
-    }
-
-    public Empleado(int ID_Empleado, String Cargo, String PrimerNombre, String SegundoNombre, String PrimerApellido, String SegundoApellido, String Rut, String Email, String FechaRegistro, String HoraEntrada, String HoraSalida) {
-        this.ID_Empleado = ID_Empleado;
-        this.Cargo = Cargo;
-        this.PrimerNombre = PrimerNombre;
-        this.SegundoNombre = SegundoNombre;
-        this.PrimerApellido = PrimerApellido;
-        this.SegundoApellido = SegundoApellido;
-        this.Rut = Rut;
-        this.Email = Email;
-        this.FechaRegistro = FechaRegistro;
-        this.HoraEntrada = HoraEntrada;
-        this.HoraSalida = HoraSalida;
     }
 
     public int getID_Empleado() {
@@ -42,6 +30,14 @@ public class Empleado {
 
     public void setID_Empleado(int ID_Empleado) {
         this.ID_Empleado = ID_Empleado;
+    }
+
+    public int getID_Asistecia() {
+        return ID_Asistecia;
+    }
+
+    public void setID_Asistecia(int ID_Asistecia) {
+        this.ID_Asistecia = ID_Asistecia;
     }
 
     public String getCargo() {
@@ -106,6 +102,14 @@ public class Empleado {
 
     public void setFechaRegistro(String FechaRegistro) {
         this.FechaRegistro = FechaRegistro;
+    }
+
+    public String getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
     }
 
     public String getHoraEntrada() {

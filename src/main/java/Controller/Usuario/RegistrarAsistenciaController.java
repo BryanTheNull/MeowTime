@@ -74,11 +74,15 @@ public class RegistrarAsistenciaController implements ActionListener {
         int ID_Usuario = user.getID_Usuario();
 
         boolean tieneEntrada = registrarAsistenciaOp.SQL_VerificarEntrada(ID_Usuario);
+        boolean tieneSalida = registrarAsistenciaOp.SQL_VerificarSalida(ID_Usuario);
 
         if (!tieneEntrada) {
             panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registrar Entrada");
-        } else {
+
+        } else if (!tieneSalida) {
             panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registrar Salida");
+        } else {
+            panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registro Completo");
         }
 
     }

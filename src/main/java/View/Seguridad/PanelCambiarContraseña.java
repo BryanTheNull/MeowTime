@@ -1,8 +1,11 @@
 package View.Seguridad;
 
+import View.Login.Login;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
+import javax.swing.text.StyleConstants;
 
 /**
  * @author Bryan Vera
@@ -11,9 +14,15 @@ import javax.swing.Timer;
 public class PanelCambiarContraseña extends javax.swing.JPanel {
 
     private Timer timer;
+    public boolean ocultarContraseña = true;
+
+    // Rutas de imagenes globales
+    ImageIcon showIcon = new ImageIcon(Login.class.getResource("/icons/ojo_Abierto 16x16.png"));
+    ImageIcon hideIcon = new ImageIcon(Login.class.getResource("/icons/ojo_Cerrado 16x16.png"));
 
     public PanelCambiarContraseña() {
         initComponents();
+        iconOjo.setIcon(hideIcon);
 
         // Iniciar temporizador para fecha y hora
         setFecha();
@@ -58,6 +67,7 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         btnGuardarCambios = new javax.swing.JButton();
         txtNuevaContraseña = new javax.swing.JPasswordField();
         txtRepetirContraseña = new javax.swing.JPasswordField();
+        iconOjo = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
@@ -121,15 +131,17 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
 
         btnGuardarCambios.setText("Guardar Cambios");
 
-        txtNuevaContraseña.setText("jPasswordField1");
-
-        txtRepetirContraseña.setText("jPasswordField1");
+        iconOjo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        iconOjo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                iconOjoMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
         background2.setLayout(background2Layout);
         background2Layout.setHorizontalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(background2Layout.createSequentialGroup()
                 .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(background2Layout.createSequentialGroup()
@@ -143,19 +155,23 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
                         .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbClaveAnterior1)
                             .addGroup(background2Layout.createSequentialGroup()
-                                .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(background2Layout.createSequentialGroup()
                                 .addComponent(lbNuevaClave, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(background2Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(background2Layout.createSequentialGroup()
+                                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(background2Layout.createSequentialGroup()
+                                        .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, background2Layout.createSequentialGroup()
+                                        .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(iconOjo)))))
                 .addContainerGap(250, Short.MAX_VALUE))
+            .addComponent(panelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         background2Layout.setVerticalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,15 +188,17 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
                 .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNuevaClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNuevaContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                .addGap(24, 24, 24)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconOjo, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbRepetirClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRepetirContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48)
                 .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -195,11 +213,26 @@ public class PanelCambiarContraseña extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void iconOjoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconOjoMousePressed
+        // Evento: Cambiar icono de ojo al presionarlo y mostrar o ocultar
+        // la contraseña segun el icono visualizado.
+        if (iconOjo.getIcon() == showIcon) {
+            iconOjo.setIcon(hideIcon);
+            txtNuevaContraseña.setEchoChar('*');
+            txtRepetirContraseña.setEchoChar('*');
+        } else {
+            iconOjo.setIcon(showIcon);
+            txtNuevaContraseña.setEchoChar((char) 0);
+            txtRepetirContraseña.setEchoChar((char) 0);
+        }
+    }//GEN-LAST:event_iconOjoMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
     public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnGuardarCambios;
+    private javax.swing.JLabel iconOjo;
     private javax.swing.JLabel lbClaveAnterior1;
     private javax.swing.JLabel lbNuevaClave;
     private javax.swing.JLabel lbRepetirClave;

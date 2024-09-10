@@ -52,7 +52,7 @@ public class PanelHistorialAsistencia extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPaneTable = new javax.swing.JScrollPane();
         jTableHistorial = new javax.swing.JTable();
-        txtMensaje1 = new javax.swing.JLabel();
+        btnRefrescar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
@@ -116,8 +116,8 @@ public class PanelHistorialAsistencia extends javax.swing.JPanel {
         jTableHistorial.setToolTipText("");
         jScrollPaneTable.setViewportView(jTableHistorial);
 
-        txtMensaje1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtMensaje1.setText("Ultimos {5} registros de {5} totales.");
+        btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refrescar 24x24 .png"))); // NOI18N
+        btnRefrescar.setText("Refrescar Tabla");
 
         javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
         background2.setLayout(background2Layout);
@@ -125,17 +125,17 @@ public class PanelHistorialAsistencia extends javax.swing.JPanel {
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(background2Layout.createSequentialGroup()
-                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(background2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(background2Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(background2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMensaje1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRefrescar)
+                    .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(background2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(background2Layout.createSequentialGroup()
+                            .addGap(250, 250, 250)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(background2Layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
                             .addComponent(jScrollPaneTable, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -151,8 +151,8 @@ public class PanelHistorialAsistencia extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPaneTable, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMensaje1)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addComponent(btnRefrescar)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -172,13 +172,13 @@ public class PanelHistorialAsistencia extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
+    public javax.swing.JButton btnRefrescar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPaneTable;
-    private javax.swing.JTable jTableHistorial;
+    public javax.swing.JTable jTableHistorial;
     private javax.swing.JPanel panelBarraSuperior;
     private javax.swing.JLabel txtFecha;
     private javax.swing.JLabel txtInformacion;
     private javax.swing.JLabel txtMensaje;
-    private javax.swing.JLabel txtMensaje1;
     // End of variables declaration//GEN-END:variables
 }

@@ -123,6 +123,8 @@ public class PanelAsistenciaDiaria extends javax.swing.JPanel {
             }
         });
         jTableAsistenciaDiaria.setToolTipText("");
+        jTableAsistenciaDiaria.setShowHorizontalLines(false);
+        jTableAsistenciaDiaria.setShowVerticalLines(false);
         jScrollPaneTable.setViewportView(jTableAsistenciaDiaria);
 
         btnRefrescar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refrescar 24x24 .png"))); // NOI18N

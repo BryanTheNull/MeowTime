@@ -44,6 +44,31 @@ public class RegistrarAsistenciaOperation {
         }
         return false;
     }
+    
+     public boolean SQL_VerificarSalida(int ID_Usuario) {
+        try {
+            con = dbConnection.getConnection();
+            String sql = "SELECT Salida FROM Asistencias WHERE ID_Usuario =? AND Fecha = CURDATE()";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ID_Usuario);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String horaSalida = rs.getString(1);
+             
+                // Si la columna "Entrada" retorna vacia o null
+                if (horaSalida == null || horaSalida.trim().isEmpty()) {
+                    return false;   // No hay Salida registrada
+                } else {
+                    return true;    // Ya tiene Salida registrada
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     public int SQL_RegistrarAsistencia(String v_Sql, int v_ID_Usuario) {
         int r = 0;

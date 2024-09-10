@@ -27,7 +27,7 @@ public class AsistenciaDiariaOperation {
         List<Empleado> DatosAsistencia = new ArrayList<>();
         try {
             con = dbConnection.getConnection();
-            String sql = "SELECT A.ID_Asistencia,\n"
+            String sql = "SELECT A.ID_Usuario,\n"
                     + "	   CONCAT(U.PrimerNombre, ' ' ,SegundoNombre) AS NombreCompleto,\n"
                     + "       U.Rut,\n"
                     + "       (SELECT Nombre FROM Cargos WHERE ID_Cargo = U.ID_Cargo) AS NombreCargo,\n"

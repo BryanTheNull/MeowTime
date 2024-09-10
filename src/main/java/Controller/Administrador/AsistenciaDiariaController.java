@@ -1,5 +1,6 @@
 package Controller.Administrador;
 
+import Config.CustomTableCellRenderer;
 import Model.Empleado;
 import View.Administrador.PanelAsistenciaDiaria;
 import java.awt.event.ActionEvent;
@@ -7,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,22 +27,21 @@ public class AsistenciaDiariaController implements ActionListener {
     public AsistenciaDiariaController(PanelAsistenciaDiaria panelAsistenciaDiaria) {
         this.panelAsistenciaDiaria = panelAsistenciaDiaria;
         this.panelAsistenciaDiaria.btnRefrescar.addActionListener(this);
-        
+
         // Consultar al inicar Contructor
         consultarAsistenciaDiaria(panelAsistenciaDiaria.jTableAsistenciaDiaria);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == panelAsistenciaDiaria.btnRefrescar){
+        if (e.getSource() == panelAsistenciaDiaria.btnRefrescar) {
             consultarAsistenciaDiaria(panelAsistenciaDiaria.jTableAsistenciaDiaria);
             JOptionPane.showMessageDialog(panelAsistenciaDiaria, "La tabla se ha actualizado correctamente.", "Actualización exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
     void consultarAsistenciaDiaria(JTable tablaAsitencia) {
-        limpiarTabla();
-        centrarContenidoTabla(tablaAsitencia);
+        model.setRowCount(0);
         model = (DefaultTableModel) tablaAsitencia.getModel();
         tablaAsitencia.setModel(model);
         List<Empleado> lista = asistenciaDiariaOp.SQL_ConsultarAsistenciaDiaria();
@@ -55,20 +53,17 @@ public class AsistenciaDiariaController implements ActionListener {
             objeto[3] = lista.get(i).getCargo();
             objeto[4] = lista.get(i).getHoraEntrada();
             objeto[5] = lista.get(i).getHoraSalida();
-            
+
             model.addRow(objeto);
         }
-    }
 
-    void centrarContenidoTabla(JTable tablaAsitencia) {
-        DefaultTableCellRenderer dtm = new DefaultTableCellRenderer();
-        dtm.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < panelAsistenciaDiaria.jTableAsistenciaDiaria.getColumnCount(); i++) {
-            tablaAsitencia.getColumnModel().getColumn(i).setCellRenderer(dtm);
+        // Establecer la altura de las filas
+        tablaAsitencia.setRowHeight(30); // Ajusta este valor según tus necesidades
+
+        // Aplicar el renderer a todas las columnas
+        for (int i = 0; i < tablaAsitencia.getColumnCount(); i++) {
+            tablaAsitencia.getColumnModel().getColumn(i).setCellRenderer(new CustomTableCellRenderer());
         }
     }
 
-    void limpiarTabla() {
-        model.setRowCount(0);
-    }
 }
