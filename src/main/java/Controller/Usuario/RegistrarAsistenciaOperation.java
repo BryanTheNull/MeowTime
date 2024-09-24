@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * @author Bryan Vera
+ * @author The Chickens
  * @since 03-09-2024
  */
 public class RegistrarAsistenciaOperation {

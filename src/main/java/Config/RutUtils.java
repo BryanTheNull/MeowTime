@@ -28,4 +28,12 @@ public class RutUtils {
             return Character.forDigit(digito, 10);
         }
     }
+
+    public static boolean verificarFormatoRut(String rut) {
+        // Expresión regular para el formato xx.xxx.xxx-x
+        String regex = "^\\d{2}\\.\\d{3}\\.\\d{3}-[\\dKk]{1}$";
+        
+        // Retornar True si el formato de rut es valido o False si es invalido
+        return rut.matches(regex);
+    }
 }

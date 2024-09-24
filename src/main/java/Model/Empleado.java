@@ -20,6 +20,7 @@ public class Empleado {
     private String Fecha;
     private String HoraEntrada;
     private String HoraSalida;
+    private String Contraseña;
 
     public Empleado() {
     }
@@ -127,5 +128,14 @@ public class Empleado {
     public void setHoraSalida(String HoraSalida) {
         this.HoraSalida = HoraSalida;
     }
+
+    public String getContraseña() {
+        return Contraseña;
+    }
+
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
+    }
+    
 
 }

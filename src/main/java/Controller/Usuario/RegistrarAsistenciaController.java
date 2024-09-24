@@ -2,12 +2,13 @@ package Controller.Usuario;
 
 import Model.Usuario;
 import View.Usuario.PanelRegistrarAsistencia;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
- * @author Bryan Vera
+ * @author The Chickens
  * @since 02-09-2024
  */
 public class RegistrarAsistenciaController implements ActionListener {
@@ -37,6 +38,7 @@ public class RegistrarAsistenciaController implements ActionListener {
                 if (decision == JOptionPane.YES_OPTION) {
                     registrarEntrada();
                     panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registrar Salida");
+                    panelRegistrarAsistencia.btnRegistrarAsistencia.setBackground(Color.decode("#FF1901"));
                 }
             } else if (estadoBoton.equals("Registrar Salida")) {
                 int decision = JOptionPane.showConfirmDialog(panelRegistrarAsistencia, "Estás a punto de registrar tu salida. ¿Deseas continuar con el registro?", "Confirmación de Registro de Salida", JOptionPane.YES_NO_OPTION);
@@ -78,11 +80,14 @@ public class RegistrarAsistenciaController implements ActionListener {
 
         if (!tieneEntrada) {
             panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registrar Entrada");
+            panelRegistrarAsistencia.btnRegistrarAsistencia.setBackground(Color.decode("#0091FE"));
 
         } else if (!tieneSalida) {
             panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registrar Salida");
+            panelRegistrarAsistencia.btnRegistrarAsistencia.setBackground(Color.decode("#FF1901"));
         } else {
             panelRegistrarAsistencia.btnRegistrarAsistencia.setText("Registro Completo");
+            panelRegistrarAsistencia.btnRegistrarAsistencia.setBackground(Color.decode("#FF1901"));
         }
 
     }

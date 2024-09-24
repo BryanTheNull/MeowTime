@@ -1,5 +1,6 @@
 package View.Administrador;
 
+import java.awt.Color;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import javax.swing.Timer;
@@ -11,6 +12,7 @@ import javax.swing.Timer;
 public class PanelReportes extends javax.swing.JPanel {
 
     private Timer timer;
+    // Variables globales}
 
     public PanelReportes() {
         initComponents();
@@ -50,6 +52,11 @@ public class PanelReportes extends javax.swing.JPanel {
         txtInformacion = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
         txtMensaje = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBoxSeleccionarTipoReporte = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jTextAreaDescripcion = new javax.swing.JTextArea();
+        btnGenerarReporte = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
@@ -96,15 +103,79 @@ public class PanelReportes extends javax.swing.JPanel {
         txtMensaje.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtMensaje.setText("Bienvenido a tu sistema favorito ♥");
 
+        jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        jLabel4.setText("GENERAR REPORTES");
+        jLabel4.setMinimumSize(new java.awt.Dimension(40, 200));
+        jLabel4.setPreferredSize(new java.awt.Dimension(200, 50));
+
+        jComboBoxSeleccionarTipoReporte.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reporte de atrasos", "Reporte de salidas anticipadas", "Reporte de inasistencias" }));
+        jComboBoxSeleccionarTipoReporte.setToolTipText("");
+        jComboBoxSeleccionarTipoReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jComboBoxSeleccionarTipoReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboBoxSeleccionarTipoReporteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jComboBoxSeleccionarTipoReporteMouseExited(evt);
+            }
+        });
+        jComboBoxSeleccionarTipoReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxSeleccionarTipoReporteActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel5.setText("Tipo de Reporte: ");
+        jLabel5.setMinimumSize(new java.awt.Dimension(40, 200));
+        jLabel5.setPreferredSize(new java.awt.Dimension(200, 50));
+
+        jTextAreaDescripcion.setEditable(false);
+        jTextAreaDescripcion.setColumns(20);
+        jTextAreaDescripcion.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jTextAreaDescripcion.setLineWrap(true);
+        jTextAreaDescripcion.setRows(3);
+        jTextAreaDescripcion.setWrapStyleWord(true);
+        jTextAreaDescripcion.setAutoscrolls(false);
+        jTextAreaDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descripcion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 13))); // NOI18N
+        jTextAreaDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTextAreaDescripcion.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+
+        btnGenerarReporte.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGenerarReporte.setText("Generar Reporte");
+        btnGenerarReporte.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnGenerarReporte.setContentAreaFilled(false);
+        btnGenerarReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnGenerarReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGenerarReporteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGenerarReporteMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout background2Layout = new javax.swing.GroupLayout(background2);
         background2.setLayout(background2Layout);
         background2Layout.setHorizontalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelBarraSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(background2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(673, Short.MAX_VALUE))
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(background2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(background2Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBoxSeleccionarTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextAreaDescripcion)
+                            .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         background2Layout.setVerticalGroup(
             background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +184,17 @@ public class PanelReportes extends javax.swing.JPanel {
                 .addComponent(txtMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelBarraSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(background2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxSeleccionarTipoReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jTextAreaDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -130,9 +211,34 @@ public class PanelReportes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBoxSeleccionarTipoReporteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarTipoReporteMouseEntered
+     
+    }//GEN-LAST:event_jComboBoxSeleccionarTipoReporteMouseEntered
+
+    private void jComboBoxSeleccionarTipoReporteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarTipoReporteMouseExited
+        
+    }//GEN-LAST:event_jComboBoxSeleccionarTipoReporteMouseExited
+
+    private void jComboBoxSeleccionarTipoReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSeleccionarTipoReporteActionPerformed
+
+    }//GEN-LAST:event_jComboBoxSeleccionarTipoReporteActionPerformed
+
+    private void btnGenerarReporteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteMouseEntered
+    
+    }//GEN-LAST:event_btnGenerarReporteMouseEntered
+
+    private void btnGenerarReporteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarReporteMouseExited
+   
+    }//GEN-LAST:event_btnGenerarReporteMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background2;
+    public javax.swing.JButton btnGenerarReporte;
+    public javax.swing.JComboBox<String> jComboBoxSeleccionarTipoReporte;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    public javax.swing.JTextArea jTextAreaDescripcion;
     private javax.swing.JPanel panelBarraSuperior;
     private javax.swing.JLabel txtFecha;
     private javax.swing.JLabel txtInformacion;

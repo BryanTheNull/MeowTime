@@ -31,7 +31,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-              <Component id="background" alignment="0" pref="1210" max="32767" attributes="0"/>
+              <Component id="background" alignment="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,9 +91,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnHistorialAsistencia" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnCambiarContraseña" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnCerrarSesion" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnRegistrarAsistencia" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnCambiarContraseña" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -112,7 +112,7 @@
                               <Component id="jLabelAdministracion" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
